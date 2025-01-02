@@ -18,7 +18,7 @@ export default function Header() {
                   </Link>
                </li>
                <li>
-                  <Link href='https://github.com' className='hover:text-secondary transition-colors'>
+                  <Link href='https://github.com/NightWanderer2004/memorize-me' className='hover:text-secondary transition-colors'>
                      GitHub
                   </Link>
                </li>
