@@ -1,4 +1,3 @@
-import { cn } from '@/utils'
 import Image from 'next/image'
 
 export default function PhotoCard({ rotation, imageUrl }) {

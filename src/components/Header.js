@@ -1,4 +1,6 @@
+'use client'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 
 export default function Header() {
    return (
@@ -12,16 +14,28 @@ export default function Header() {
          </div>
          <nav>
             <ul className='mt-6 lg:mt-0 flex gap-6 text-[18px] text-primary tracking-[-1.5%]'>
-               <li>
+               <motion.li
+                  whileTap={{ scale: 0.97 }}
+                  transition={{
+                     ease: 'backOut',
+                     duration: 0.55,
+                  }}
+               >
                   <Link href='/creation-history' className='hover:text-secondary transition-colors'>
                      Creation history
                   </Link>
-               </li>
-               <li>
+               </motion.li>
+               <motion.li
+                  whileTap={{ scale: 0.97 }}
+                  transition={{
+                     ease: 'backOut',
+                     duration: 0.55,
+                  }}
+               >
                   <Link href='https://github.com/NightWanderer2004/memorize-me' className='hover:text-secondary transition-colors'>
                      GitHub
                   </Link>
-               </li>
+               </motion.li>
             </ul>
          </nav>
       </header>

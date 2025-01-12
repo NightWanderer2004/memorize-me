@@ -1,11 +1,11 @@
 import { Manrope } from 'next/font/google'
 import './globals.css'
-import { cn } from '@/utils'
+import { cn } from '@/lib/utils'
 
 const manrope = Manrope({ subsets: ['latin'] })
 
 export const metadata = {
-   title: 'Memorize me - Digital Gallery',
+   title: 'Memorize me',
    description: 'A digital gallery of cherished moments',
 }
 

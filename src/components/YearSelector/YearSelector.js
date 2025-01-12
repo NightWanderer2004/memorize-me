@@ -1,4 +1,4 @@
-import { cn } from '@/utils'
+import { cn } from '@/lib/utils'
 
 export default function YearSelector() {
    const years = ['2024', '2023', '2022']
