@@ -3,8 +3,9 @@ import { useRef, useEffect } from 'react'
 import { useScroll, useSpring } from 'framer-motion'
 import TimelineStrip from '@/components/TimelineStrip'
 import Header from '@/components/Header'
-import AlbumSet from '@/components/Gallery/AlbumSet'
+import AlbumSet from '@/components/gallery/AlbumSet'
 import data from '../../data'
+import AnimatedWrapper from '@/components/AnimatedWrapper'
 
 export default function Home() {
    const containerRef = useRef(null)
@@ -62,15 +63,14 @@ export default function Home() {
    return (
       <main className='min-h-screen'>
          <Header />
-         <div
-            ref={containerRef}
-            className='fixed top-[475px] left-10 right-10 -translate-y-1/2 h-[400px] overflow-x-auto overflow-y-hidden no-scrollbar'
-         >
-            <div className='flex gap-[120px] px-4 lg:px-[88px]'>
-               {data.years.map(year =>
-                  year.albums.map(album => <AlbumSet key={`${year.year}-${album.month}`} month={album.month} photos={album.photos} />)
-               )}
-            </div>
+         <div ref={containerRef} className='fixed top-[300px] left-0 right-0  h-[400px] overflow-x-auto overflow-y-hidden no-scrollbar'>
+            <AnimatedWrapper>
+               <div className='flex gap-[120px] px-4 lg:px-[120px]'>
+                  {data.years.map(year =>
+                     year.albums.map(album => <AlbumSet key={`${year.year}-${album.month}`} month={album.month} photos={album.photos} />)
+                  )}
+               </div>
+            </AnimatedWrapper>
          </div>
          <TimelineStrip years={data.years} onYearSelect={handleYearSelect} scrollProgress={smoothScrollProgress} />
       </main>

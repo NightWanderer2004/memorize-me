@@ -19,6 +19,7 @@ export default function AlbumSet({ month, photos }) {
          <motion.div
             initial={{ scale: 1 }}
             whileHover={{ scale: 1.025 }}
+            whileTap={{ scale: 0.99 }}
             onHoverStart={handleHover}
             onHoverEnd={handleHover}
             transition={{
@@ -32,7 +33,7 @@ export default function AlbumSet({ month, photos }) {
                return <PhotoCard key={i} rotation={rotation} imageUrl={photo} />
             })}
          </motion.div>
-         <h3 className='mt-3 text-2xl font-normal text-secondary'>{month}</h3>
+         <h3 className='mt-3.5 text-xl font-normal text-secondary'>{month}</h3>
       </div>
    )
 }
