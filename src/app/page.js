@@ -1,13 +1,80 @@
+'use client'
+import { useRef, useEffect } from 'react'
+import { useScroll, useSpring } from 'framer-motion'
+import TimelineStrip from '@/components/TimelineStrip'
 import Header from '@/components/Header'
-import PhotoGallery from '@/components/Gallery/PhotoGallery'
-import YearSelector from '@/components/YearSelector/YearSelector'
+import AlbumSet from '@/components/gallery/AlbumSet'
+import data from '../../data'
+import AnimatedWrapper from '@/components/AnimatedWrapper'
+import AddAlbum from '@/components/gallery/AddAlbum'
 
 export default function Home() {
+   const containerRef = useRef(null)
+
+   const { scrollXProgress } = useScroll({
+      container: containerRef,
+   })
+
+   const smoothScrollProgress = useSpring(scrollXProgress, {
+      stiffness: 690,
+      damping: 75,
+      mass: 0.25,
+   })
+
+   // Calculate total width of all albums
+   const albumWidth = 335
+
+   const totalWidth = data.years.reduce((acc, year) => {
+      return acc + year.albums.length * albumWidth
+   }, 0)
+
+   // Update selected year based on scroll position
+   useEffect(() => {
+      const unsubscribe = smoothScrollProgress.on('change', latest => {
+         const scrollPosition = latest * totalWidth
+         let accumWidth = 0
+
+         for (const year of data.years) {
+            const yearWidth = year.albums.length * albumWidth
+            if (scrollPosition >= accumWidth && scrollPosition < accumWidth + yearWidth) {
+               break
+            }
+            accumWidth += yearWidth
+         }
+      })
+
+      return () => unsubscribe()
+   }, [smoothScrollProgress, totalWidth])
+
+   const handleYearSelect = year => {
+      if (!containerRef.current) return
+
+      let scrollTo = 0
+      for (const y of data.years) {
+         if (y.year === year) break
+         scrollTo += y.albums.length * albumWidth
+      }
+
+      containerRef.current.scrollTo({
+         left: scrollTo,
+         behavior: 'smooth',
+      })
+   }
+
    return (
-      <main>
+      <main className='min-h-screen'>
          <Header />
-         <PhotoGallery />
-         <YearSelector />
+         <div ref={containerRef} className='fixed top-[300px] left-0 right-0  h-[400px] overflow-x-auto overflow-y-hidden no-scrollbar'>
+            <AnimatedWrapper>
+               <div className='flex gap-[100px] lg:gap-[120px] px-[45px] xl:px-[120px]'>
+                  <AddAlbum />
+                  {data.years.map(year =>
+                     year.albums.map(album => <AlbumSet key={`${year.year}-${album.month}`} month={album.month} photos={album.photos} />)
+                  )}
+               </div>
+            </AnimatedWrapper>
+         </div>
+         <TimelineStrip years={data.years} onYearSelect={handleYearSelect} scrollProgress={smoothScrollProgress} />
       </main>
    )
 }

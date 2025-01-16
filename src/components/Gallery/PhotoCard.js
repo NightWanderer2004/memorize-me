@@ -1,12 +1,12 @@
 import Image from 'next/image'
 
-export default function PhotoCard({ month, imageUrl }) {
+export default function PhotoCard({ rotation, imageUrl }) {
    return (
-      <div>
-         <div className='h-[198px] w-[295px] overflow-hidden rounded-[2px] shadow-photo border border-[#fffffc]/80 transform transition-transform'>
-            <Image src={imageUrl} alt={`Photo from ${month}`} fill />
-         </div>
-         <h3 className='mt-2 text-2xl font-normal text-secondary'>{month}</h3>
+      <div
+         style={{ transform: `rotate(${rotation}deg)` }}
+         className='cursor-pointer absolute h-[198px] w-[295px] overflow-hidden rounded-[2px] shadow-photo border-2 border-[#F8F9FA] transform transition-transform duration-[400ms] ease-out'
+      >
+         <Image className='pointer-events-none' src={imageUrl} alt={imageUrl} fill />
       </div>
    )
 }
