@@ -3,10 +3,10 @@ import { useRef, useEffect, useState } from 'react'
 import { useScroll, useSpring } from 'framer-motion'
 import TimelineStrip from '@/components/timeline/TimelineStrip'
 import Header from '@/components/Header'
-// import AlbumSet from '@/components/gallery/AlbumSet'
+import AlbumSet from '@/components/gallery/AlbumSet'
 import data from '../../data'
 import AnimatedWrapper from '@/components/AnimatedWrapper'
-// import AddAlbum from '@/components/gallery/AddAlbum'
+import AddAlbum from '@/components/gallery/AddAlbum'
 
 export default function Home() {
    const containerRef = useRef(null)
