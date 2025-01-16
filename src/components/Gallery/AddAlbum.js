@@ -1,12 +1,11 @@
 'use client'
-
 import React from 'react'
 import { motion } from 'framer-motion'
-import { PlusCircle, PlusSquare } from 'lucide-react'
+import { PlusSquare } from 'lucide-react'
 
 export default function AddAlbum() {
    return (
-      <div className='relative top-4 [&>div]:last:mr-[45px] xl:[&>div]:last:mr-[120px]'>
+      <div className='relative top-4  [&>div]:last:mr-[45px] xl:[&>div]:last:mr-[120px]'>
          <motion.div
             initial={{ scale: 1 }}
             whileHover={{ scale: 1.025 }}

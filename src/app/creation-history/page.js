@@ -6,8 +6,8 @@ import { motion } from 'framer-motion'
 
 export default function Home() {
    return (
-      <main className='container mx-auto px-[16px] lg:px-[88px]'>
-         <header>
+      <main className='container max-w-3xl mx-auto px-[16px] pt-8'>
+         <motion.header initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ ease: 'backOut', duration: 0.55 }}>
             <motion.div
                className='inline-block'
                whileTap={{ scale: 0.97 }}
@@ -21,11 +21,10 @@ export default function Home() {
                   <span className='text-xl lg:text-[18px] font-normal tracking-[-1.5%] leading-[75%]'>Back to Gallery</span>
                </Link>
             </motion.div>
-         </header>
+         </motion.header>
          <AnimatedWrapper>
-            <p className='max-w-4xl mx-auto text-lg px-[16px] lg:px-[88px] mt-[115px]'>
-               Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, nobis ab sit rem totam neque. Quasi repellendus placeat dolorum itaque
-               non impedit consequuntur officia illum error rem, similique dolores suscipit.
+            <p className='mx-auto text-lg mt-[90px]'>
+               Hi-Hi ヽ(°〇°)ﾉ <br /> <br /> This app was created by the reason of study project
             </p>
          </AnimatedWrapper>
       </main>
