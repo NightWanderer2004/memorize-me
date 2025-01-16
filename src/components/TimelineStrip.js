@@ -1,6 +1,5 @@
 'use client'
-
-import { motion, useSpring, useTransform, MotionValue } from 'framer-motion'
+import { motion, useTransform } from 'framer-motion'
 import { useRef, useMemo } from 'react'
 import AnimatedWrapper from './AnimatedWrapper'
 
@@ -9,7 +8,7 @@ export default function TimelineStrip({ years, onYearSelect, scrollProgress }) {
    const totalAlbums = useMemo(() => years.reduce((acc, year) => acc + year.albums.length, 0), [years])
 
    const isMobile = typeof window !== 'undefined' ? window.innerWidth <= 768 : false
-   const linesCount = isMobile ? 45 : 90
+   const linesCount = isMobile ? 50 : 90
 
    const smoothProgress = useTransform(scrollProgress, value => value)
 
@@ -30,18 +29,18 @@ export default function TimelineStrip({ years, onYearSelect, scrollProgress }) {
    }, [years, totalAlbums])
 
    return (
-      <div className='fixed bottom-0 left-0 right-0 px-5 lg:px-16 h-24'>
+      <div className='fixed bottom-0 left-0 right-0 px-5 xl:px-16 h-24'>
          <div ref={containerRef} className='relative h-full max-w-5xl mx-auto'>
             {/* Year labels */}
             <AnimatedWrapper className='relative h-full'>
-               <div className='absolute left-0 right-0 top-5'>
+               <div className='absolute left-0 right-0 top-7 xl:top-5'>
                   {yearPositions.map(({ year, position }) => (
                      <motion.button
                         key={year}
-                        className='absolute text-2xl font-light'
+                        className='absolute text-lg xl:text-2xl font-normal'
                         style={{
                            left: `${position * 100}%`,
-                           color: useTransform(smoothProgress, [position - 0.1, position, position + 0.1], ['#9ca3af', '#000000', '#9ca3af']),
+                           color: useTransform(smoothProgress, [position - 0.1, position, position + 0.1], ['#9ca3af', '#4682B6', '#9ca3af']),
                            transformOrigin: 'center',
                            opacity: useTransform(
                               smoothProgress,
@@ -62,7 +61,7 @@ export default function TimelineStrip({ years, onYearSelect, scrollProgress }) {
                </div>
 
                {/* Timeline lines */}
-               <div className='absolute left-3 lg:left-6 right-3 lg:right-6 bottom-4 h-5'>
+               <div className='absolute left-3 xl:left-6 right-3 xl:right-6 bottom-4 h-5'>
                   {Array.from({ length: linesCount }).map((_, index) => {
                      const progress = index / (linesCount - 1)
 

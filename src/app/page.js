@@ -6,6 +6,7 @@ import Header from '@/components/Header'
 import AlbumSet from '@/components/gallery/AlbumSet'
 import data from '../../data'
 import AnimatedWrapper from '@/components/AnimatedWrapper'
+import AddAlbum from '@/components/gallery/AddAlbum'
 
 export default function Home() {
    const containerRef = useRef(null)
@@ -21,7 +22,7 @@ export default function Home() {
    })
 
    // Calculate total width of all albums
-   const albumWidth = 250
+   const albumWidth = 335
 
    const totalWidth = data.years.reduce((acc, year) => {
       return acc + year.albums.length * albumWidth
@@ -65,7 +66,8 @@ export default function Home() {
          <Header />
          <div ref={containerRef} className='fixed top-[300px] left-0 right-0  h-[400px] overflow-x-auto overflow-y-hidden no-scrollbar'>
             <AnimatedWrapper>
-               <div className='flex gap-[120px] px-4 lg:px-[120px]'>
+               <div className='flex gap-[100px] lg:gap-[120px] px-[45px] xl:px-[120px]'>
+                  <AddAlbum />
                   {data.years.map(year =>
                      year.albums.map(album => <AlbumSet key={`${year.year}-${album.month}`} month={album.month} photos={album.photos} />)
                   )}

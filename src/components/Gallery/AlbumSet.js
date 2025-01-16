@@ -15,7 +15,7 @@ export default function AlbumSet({ month, photos }) {
    }
 
    return (
-      <div className='relative top-4'>
+      <div className='relative top-4 [&>div]:last:mr-[45px] xl:[&>div]:last:mr-[120px]'>
          <motion.div
             initial={{ scale: 1 }}
             whileHover={{ scale: 1.025 }}

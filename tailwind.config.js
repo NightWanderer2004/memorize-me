@@ -7,6 +7,7 @@ module.exports = {
             primary: '#4C4E4B',
             secondary: '#181F14',
             accent: '#4682B6',
+            back: '#fefcff',
          },
          boxShadow: {
             minimal: '0 0.6px 2.4px rgba(0, 0, 0, 0.15)',

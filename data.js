@@ -43,6 +43,26 @@ const data = {
                month: 'April',
                photos: Array.from({ length: 3 }, () => `/images/${getRandomImageNumber()}.jpg`),
             },
+            {
+               month: 'April',
+               photos: Array.from({ length: 3 }, () => `/images/${getRandomImageNumber()}.jpg`),
+            },
+            {
+               month: 'April',
+               photos: Array.from({ length: 3 }, () => `/images/${getRandomImageNumber()}.jpg`),
+            },
+            {
+               month: 'April',
+               photos: Array.from({ length: 3 }, () => `/images/${getRandomImageNumber()}.jpg`),
+            },
+            {
+               month: 'April',
+               photos: Array.from({ length: 3 }, () => `/images/${getRandomImageNumber()}.jpg`),
+            },
+            {
+               month: 'April',
+               photos: Array.from({ length: 3 }, () => `/images/${getRandomImageNumber()}.jpg`),
+            },
          ],
       },
    ],

@@ -11,8 +11,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
    return (
-      <html lang='en'>
-         <body className={cn(manrope.className, 'pt-[50px] pb-[30px] bg-[#fefcff]')}>{children}</body>
+      <html lang='en' suppressHydrationWarning>
+         <body className={cn(manrope.className, 'pt-[44px] lg:pt-[50px] pb-[30px] bg-back')}>{children}</body>
       </html>
    )
 }
