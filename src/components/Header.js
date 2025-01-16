@@ -4,7 +4,12 @@ import { motion } from 'framer-motion'
 
 export default function Header() {
    return (
-      <header className='container mx-auto px-[16px] xl:px-[88px] flex flex-col md:flex-row justify-between items-start w-full'>
+      <motion.header
+         initial={{ opacity: 0 }}
+         animate={{ opacity: 1 }}
+         transition={{ ease: 'backOut', duration: 0.55 }}
+         className='container mx-auto px-[16px] xl:px-[88px] flex flex-col md:flex-row justify-between items-start w-full'
+      >
          <div>
             <Link href='/' className='text-[54px] lg:text-[62px] font-medium tracking-[-2%] leading-[75%] text-primary'>
                <span>Memorize</span>
@@ -34,12 +39,17 @@ export default function Header() {
                      duration: 0.55,
                   }}
                >
-                  <Link href='https://github.com/NightWanderer2004/memorize-me' className='hover:text-secondary transition-colors'>
+                  <Link
+                     href='https://github.com/NightWanderer2004/memorize-me'
+                     target='_blank'
+                     rel='noopener noreferrer'
+                     className='hover:text-secondary transition-colors'
+                  >
                      GitHub
                   </Link>
                </motion.li>
             </ul>
          </nav>
-      </header>
+      </motion.header>
    )
 }

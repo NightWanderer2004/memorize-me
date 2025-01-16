@@ -5,7 +5,7 @@ export default function Lines({ linesCount, smoothProgress }) {
    return (
       <div className='absolute left-3 xl:left-6 right-3 xl:right-6 bottom-4 h-5'>
          {Array.from({ length: linesCount }).map((_, index) => {
-            const progress = index / linesCount
+            const progress = index / (linesCount - 1)
             const isFifthLine = (index + 1) % 10 === 0 || index === 0
 
             return (

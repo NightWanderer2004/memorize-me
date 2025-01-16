@@ -1,5 +1,5 @@
 'use client'
-import { motion } from 'framer-motion'
+import { motion, useTransform } from 'framer-motion'
 
 export default function Years({ yearPositions, onYearSelect, smoothProgress }) {
    return (

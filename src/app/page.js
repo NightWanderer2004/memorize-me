@@ -6,6 +6,7 @@ import Header from '@/components/Header'
 import AlbumSet from '@/components/gallery/AlbumSet'
 import data from '../../data'
 import AnimatedWrapper from '@/components/AnimatedWrapper'
+import AddAlbum from '@/components/gallery/AddAlbum'
 
 export default function Home() {
    const containerRef = useRef(null)
@@ -125,10 +126,11 @@ export default function Home() {
             <AnimatedWrapper>
                {/* Desktop */}
                <div className='hidden md:flex gap-[100px] xl:gap-[120px] px-[45px] xl:px-[120px] relative'>
+                  {/* <AddAlbum /> */}
                   {data.years.map((year, i) => (
                      <div key={i} className='flex gap-[100px] xl:gap-[120px] relative'>
                         <div
-                           className='hidden md:block absolute right-0 top-1/2 -translate-y-1/2 h-1/2 w-px bg-gradient-to-b from-transparent via-gray-200 to-transparent'
+                           className='hidden md:block absolute right-0 top-1/2 -translate-y-1/2 h-1/2 w-[1.5px] bg-gradient-to-b from-transparent via-tertirary/70 to-transparent'
                            aria-hidden='true'
                         />
                         {year.albums.map((album, j) => (
@@ -139,6 +141,7 @@ export default function Home() {
                </div>
                {/* Mobile */}
                <div className='flex md:hidden gap-[100px] lg:gap-[120px] px-[45px] xl:px-[120px]'>
+                  {/* <AddAlbum /> */}
                   {data.years.map((year, i) =>
                      year.albums.map((album, j) => <AlbumSet key={`${i}-${j}`} month={album.month} photos={album.photos} />)
                   )}
