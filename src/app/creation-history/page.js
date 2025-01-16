@@ -24,8 +24,7 @@ export default function Home() {
          </motion.header>
          <AnimatedWrapper>
             <p className='mx-auto text-lg mt-[90px]'>
-               Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, nobis ab sit rem totam neque. Quasi repellendus placeat dolorum itaque
-               non impedit consequuntur officia illum error rem, similique dolores suscipit.
+               Hi-Hi ヽ(°〇°)ﾉ <br /> <br /> This app was created by the reason of study project
             </p>
          </AnimatedWrapper>
       </main>
