@@ -1,7 +1,7 @@
 'use client'
 import { useRef, useEffect, useState } from 'react'
 import { useScroll, useSpring } from 'framer-motion'
-import TimelineStrip from '@/components/TimelineStrip'
+import TimelineStrip from '@/components/timeline/TimelineStrip'
 import Header from '@/components/Header'
 import AlbumSet from '@/components/gallery/AlbumSet'
 import data from '../../data'
@@ -9,6 +9,7 @@ import AnimatedWrapper from '@/components/AnimatedWrapper'
 
 export default function Home() {
    const containerRef = useRef(null)
+   const [containerWidth, setContainerWidth] = useState(0)
    const [dimensions, setDimensions] = useState({
       albumWidth: 420,
       gapWidth: 120,
@@ -18,7 +19,7 @@ export default function Home() {
    // Update dimensions based on screen size
    useEffect(() => {
       const updateDimensions = () => {
-         const isMobile = window.innerWidth < 1024
+         const isMobile = window !== undefined ? window.innerWidth < 768 : false
          setDimensions({
             albumWidth: isMobile ? 300 : 420,
             gapWidth: isMobile ? 100 : 120,
@@ -29,6 +30,19 @@ export default function Home() {
       updateDimensions()
       window.addEventListener('resize', updateDimensions)
       return () => window.removeEventListener('resize', updateDimensions)
+   }, [])
+
+   // Update container width
+   useEffect(() => {
+      const updateContainerWidth = () => {
+         if (containerRef.current) {
+            setContainerWidth(containerRef.current.offsetWidth)
+         }
+      }
+
+      updateContainerWidth()
+      window.addEventListener('resize', updateContainerWidth)
+      return () => window.removeEventListener('resize', updateContainerWidth)
    }, [])
 
    const { scrollXProgress } = useScroll({
@@ -56,6 +70,14 @@ export default function Home() {
 
       for (const year of data.years) {
          if (year.year === targetYear) {
+            // Calculate position considering centering on desktop
+            const isMobile = window !== undefined ? window.innerWidth < 768 : false
+            if (!isMobile) {
+               // Center the first album of the year on desktop
+               const centerOffset = (containerWidth - dimensions.albumWidth) / 2
+               return Math.max(0, position - centerOffset)
+            }
+            // Use previous logic on mobile
             return Math.max(0, position - dimensions.sideOffset)
          }
          position += year.albums.length * dimensions.albumWidth + (year.albums.length - 1) * dimensions.gapWidth
@@ -76,11 +98,9 @@ export default function Home() {
          for (const year of data.years) {
             const yearWidth = year.albums.length * dimensions.albumWidth + (year.albums.length - 1) * dimensions.gapWidth
 
-            if (scrollPosition >= accumWidth && scrollPosition < accumWidth + yearWidth) {
-               // Current year found
-               break
-            }
-            accumWidth += yearWidth + dimensions.gapWidth // Добавляем гэп между годами
+            if (scrollPosition >= accumWidth && scrollPosition < accumWidth + yearWidth) break
+
+            accumWidth += yearWidth + dimensions.gapWidth
          }
       })
 
@@ -103,8 +123,25 @@ export default function Home() {
          <Header />
          <div ref={containerRef} className='fixed top-[300px] left-0 right-0 h-[400px] overflow-x-auto overflow-y-hidden no-scrollbar'>
             <AnimatedWrapper>
-               <div className='flex gap-[100px] lg:gap-[120px] px-[45px] xl:px-[120px]'>
-                  {data.years.map((year, i) => year.albums.map(album => <AlbumSet key={i} month={album.month} photos={album.photos} />))}
+               {/* Desktop */}
+               <div className='hidden md:flex gap-[100px] xl:gap-[120px] px-[45px] xl:px-[120px] relative'>
+                  {data.years.map((year, i) => (
+                     <div key={i} className='flex gap-[100px] xl:gap-[120px] relative'>
+                        <div
+                           className='hidden md:block absolute right-0 top-1/2 -translate-y-1/2 h-1/2 w-px bg-gradient-to-b from-transparent via-gray-200 to-transparent'
+                           aria-hidden='true'
+                        />
+                        {year.albums.map((album, j) => (
+                           <AlbumSet key={j} month={album.month} photos={album.photos} />
+                        ))}
+                     </div>
+                  ))}
+               </div>
+               {/* Mobile */}
+               <div className='flex md:hidden gap-[100px] lg:gap-[120px] px-[45px] xl:px-[120px]'>
+                  {data.years.map((year, i) =>
+                     year.albums.map((album, j) => <AlbumSet key={`${i}-${j}`} month={album.month} photos={album.photos} />)
+                  )}
                </div>
             </AnimatedWrapper>
          </div>

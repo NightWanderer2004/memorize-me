@@ -2,13 +2,14 @@
 import { motion, useTransform } from 'framer-motion'
 import { useRef, useMemo } from 'react'
 import { Plus, PlusSquare } from 'lucide-react'
-import AnimatedWrapper from './AnimatedWrapper'
+import AnimatedWrapper from '../AnimatedWrapper'
+import Lines from './Lines'
 
 export default function TimelineStrip({ years, onYearSelect, scrollProgress }) {
    const containerRef = useRef(null)
 
    const isMobile = typeof window !== 'undefined' ? window.innerWidth <= 768 : false
-   const linesCount = isMobile ? 50 : 90
+   const linesCount = isMobile ? 50 : 100
 
    const smoothProgress = useTransform(scrollProgress, value => value)
 
@@ -72,42 +73,7 @@ export default function TimelineStrip({ years, onYearSelect, scrollProgress }) {
                   ))}
                </div>
 
-               {/* Timeline lines */}
-               <div className='absolute left-3 xl:left-6 right-3 xl:right-6 bottom-4 h-5'>
-                  {/* <motion.button
-                     initial={{ scale: 1 }}
-                     whileHover={{ scale: 1.025 }}
-                     whileTap={{ scale: 0.99 }}
-                     transition={{
-                        ease: 'backOut',
-                        duration: 0.55,
-                     }}
-                     className='absolute -bottom-1 -left-12 '
-                  >
-                     <PlusSquare className='size-9 stroke-1 text-[#d1d5db] transition-colors hover:text-accent' />
-                  </motion.button> */}
-                  {Array.from({ length: linesCount }).map((_, index) => {
-                     const progress = index / (linesCount - 1)
-
-                     return (
-                        <motion.div
-                           key={index}
-                           className='absolute bottom-0 w-full h-full rounded-xl'
-                           style={{
-                              left: `${progress * 100}%`,
-                              backgroundColor: useTransform(
-                                 smoothProgress,
-                                 [progress - 0.02, progress, progress + 0.02],
-                                 ['#d1d5db', '#4682B6', '#d1d5db']
-                              ),
-                              opacity: useTransform(smoothProgress, [progress - 0.1, progress, progress + 0.1], [0.3, 1, 0.3]),
-                              width: useTransform(smoothProgress, [progress - 0.02, progress, progress + 0.02], ['2px', '2.25px', '2px']),
-                              height: useTransform(smoothProgress, [progress - 0.02, progress, progress + 0.02], ['14px', '16px', '14px']),
-                           }}
-                        />
-                     )
-                  })}
-               </div>
+               <Lines linesCount={linesCount} smoothProgress={smoothProgress} />
             </AnimatedWrapper>
          </div>
       </div>
