@@ -15,15 +15,15 @@ const data = {
          year: 2024,
          albums: [
             {
-               month: 'November',
+               month: 'December',
                photos: Array.from({ length: 3 }, () => `/images/${getRandomImageNumber()}.jpg`),
             },
             {
-               month: 'Septermber',
+               month: 'October',
                photos: Array.from({ length: 3 }, () => `/images/${getRandomImageNumber()}.jpg`),
             },
             {
-               month: 'July',
+               month: 'August',
                photos: Array.from({ length: 3 }, () => `/images/${getRandomImageNumber()}.jpg`),
             },
          ],
@@ -32,35 +32,24 @@ const data = {
          year: 2023,
          albums: [
             {
-               month: 'February',
-               photos: Array.from({ length: 3 }, () => `/images/${getRandomImageNumber()}.jpg`),
-            },
-            {
                month: 'March',
                photos: Array.from({ length: 3 }, () => `/images/${getRandomImageNumber()}.jpg`),
             },
             {
-               month: 'April',
+               month: 'September',
+               photos: Array.from({ length: 3 }, () => `/images/${getRandomImageNumber()}.jpg`),
+            },
+         ],
+      },
+      {
+         year: 2022,
+         albums: [
+            {
+               month: 'February',
                photos: Array.from({ length: 3 }, () => `/images/${getRandomImageNumber()}.jpg`),
             },
             {
-               month: 'April',
-               photos: Array.from({ length: 3 }, () => `/images/${getRandomImageNumber()}.jpg`),
-            },
-            {
-               month: 'April',
-               photos: Array.from({ length: 3 }, () => `/images/${getRandomImageNumber()}.jpg`),
-            },
-            {
-               month: 'April',
-               photos: Array.from({ length: 3 }, () => `/images/${getRandomImageNumber()}.jpg`),
-            },
-            {
-               month: 'April',
-               photos: Array.from({ length: 3 }, () => `/images/${getRandomImageNumber()}.jpg`),
-            },
-            {
-               month: 'April',
+               month: 'June',
                photos: Array.from({ length: 3 }, () => `/images/${getRandomImageNumber()}.jpg`),
             },
          ],
