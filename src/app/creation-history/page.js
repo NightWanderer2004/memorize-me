@@ -23,7 +23,7 @@ export default function Home() {
             </motion.div>
          </motion.header>
          <AnimatedWrapper>
-            <p className='mx-auto text-lg mt-[90px]'>
+            <p className='mx-auto text-lg mt-14'>
                Hi-Hi ヽ(°〇°)ﾉ <br /> <br /> This app was created by the reason of study project
             </p>
          </AnimatedWrapper>

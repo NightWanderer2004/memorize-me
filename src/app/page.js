@@ -122,7 +122,7 @@ export default function Home() {
    return (
       <main className='min-h-screen'>
          <Header />
-         <div ref={containerRef} className='fixed top-[300px] left-0 right-0 h-[400px] overflow-x-auto overflow-y-hidden no-scrollbar'>
+         <div ref={containerRef} className='fixed top-[35%] xl:top-[300px] left-0 right-0 h-[400px] overflow-x-auto overflow-y-hidden no-scrollbar'>
             <AnimatedWrapper>
                {/* Desktop */}
                <div className='hidden md:flex gap-[100px] xl:gap-[120px] px-[45px] xl:px-[120px] relative'>
@@ -130,7 +130,7 @@ export default function Home() {
                   {data.years.map((year, i) => (
                      <div key={i} className='flex gap-[100px] xl:gap-[120px] relative'>
                         <div
-                           className='hidden md:block absolute right-0 top-1/2 -translate-y-1/2 h-1/2 w-[1.5px] bg-gradient-to-b from-transparent via-tertirary/70 to-transparent'
+                           className='hidden md:block absolute -right-5 xl:right-0 top-1/2 -translate-y-1/2 h-1/2 w-[1.5px] bg-gradient-to-b from-transparent via-tertirary/70 to-transparent'
                            aria-hidden='true'
                         />
                         {year.albums.map((album, j) => (
