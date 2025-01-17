@@ -7,9 +7,11 @@ import AlbumSet from '@/components/gallery/AlbumSet'
 import data from '../../data'
 import AnimatedWrapper from '@/components/AnimatedWrapper'
 import AddAlbum from '@/components/gallery/AddAlbum'
+import useIsMobile from '@/hooks/useIsMobile'
 
 export default function Home() {
    const containerRef = useRef(null)
+   const isMobile = useIsMobile()
    const [containerWidth, setContainerWidth] = useState(0)
    const [dimensions, setDimensions] = useState({
       albumWidth: 420,
@@ -19,22 +21,17 @@ export default function Home() {
 
    // Update dimensions based on screen size
    useEffect(() => {
-      const updateDimensions = () => {
-         const isMobile = window !== undefined ? window.innerWidth < 768 : false
-         setDimensions({
-            albumWidth: isMobile ? 300 : 420,
-            gapWidth: isMobile ? 100 : 120,
-            sideOffset: isMobile ? 45 : 120,
-         })
-      }
-
-      updateDimensions()
-      window.addEventListener('resize', updateDimensions)
-      return () => window.removeEventListener('resize', updateDimensions)
-   }, [])
+      setDimensions({
+         albumWidth: isMobile ? 300 : 420,
+         gapWidth: isMobile ? 100 : 120,
+         sideOffset: isMobile ? 45 : 120,
+      })
+   }, [isMobile])
 
    // Update container width
    useEffect(() => {
+      if (typeof window === 'undefined') return
+
       const updateContainerWidth = () => {
          if (containerRef.current) {
             setContainerWidth(containerRef.current.offsetWidth)
@@ -71,14 +68,10 @@ export default function Home() {
 
       for (const year of data.years) {
          if (year.year === targetYear) {
-            // Calculate position considering centering on desktop
-            const isMobile = window !== undefined ? window.innerWidth < 768 : false
             if (!isMobile) {
-               // Center the first album of the year on desktop
                const centerOffset = (containerWidth - dimensions.albumWidth) / 2
                return Math.max(0, position - centerOffset)
             }
-            // Use previous logic on mobile
             return Math.max(0, position - dimensions.sideOffset)
          }
          position += year.albums.length * dimensions.albumWidth + (year.albums.length - 1) * dimensions.gapWidth

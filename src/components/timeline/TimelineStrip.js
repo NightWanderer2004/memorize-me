@@ -7,10 +7,6 @@ import Years from './Years'
 
 export default function TimelineStrip({ years, onYearSelect, scrollProgress }) {
    const containerRef = useRef(null)
-
-   const isMobile = typeof window !== 'undefined' ? window.innerWidth <= 768 : false
-   const linesCount = isMobile ? 50 : 100
-
    const smoothProgress = useTransform(scrollProgress, value => value)
 
    const yearPositions = useMemo(() => {
@@ -41,7 +37,7 @@ export default function TimelineStrip({ years, onYearSelect, scrollProgress }) {
          <div ref={containerRef} className='relative h-full max-w-5xl mx-auto'>
             <AnimatedWrapper className='relative h-full'>
                <Years yearPositions={yearPositions} onYearSelect={onYearSelect} smoothProgress={smoothProgress} />
-               <Lines linesCount={linesCount} smoothProgress={smoothProgress} />
+               <Lines smoothProgress={smoothProgress} />
             </AnimatedWrapper>
          </div>
       </div>

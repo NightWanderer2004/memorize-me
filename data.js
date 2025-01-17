@@ -1,5 +1,3 @@
-const getRandomImageNumber = () => Math.floor(Math.random() * 5) + 1
-
 const data = {
    years: [
       {
@@ -7,7 +5,7 @@ const data = {
          albums: [
             {
                month: 'January',
-               photos: Array.from({ length: 3 }, () => `/images/${getRandomImageNumber()}.jpg`),
+               photos: ['/images/1.jpg', '/images/2.jpg', '/images/3.jpg'],
             },
          ],
       },
@@ -16,15 +14,15 @@ const data = {
          albums: [
             {
                month: 'December',
-               photos: Array.from({ length: 3 }, () => `/images/${getRandomImageNumber()}.jpg`),
+               photos: ['/images/1.jpg', '/images/2.jpg', '/images/3.jpg'],
             },
             {
                month: 'October',
-               photos: Array.from({ length: 3 }, () => `/images/${getRandomImageNumber()}.jpg`),
+               photos: ['/images/4.jpg', '/images/5.jpg', '/images/1.jpg'],
             },
             {
                month: 'August',
-               photos: Array.from({ length: 3 }, () => `/images/${getRandomImageNumber()}.jpg`),
+               photos: ['/images/2.jpg', '/images/3.jpg', '/images/4.jpg'],
             },
          ],
       },
@@ -33,11 +31,11 @@ const data = {
          albums: [
             {
                month: 'March',
-               photos: Array.from({ length: 3 }, () => `/images/${getRandomImageNumber()}.jpg`),
+               photos: ['/images/5.jpg', '/images/1.jpg', '/images/2.jpg'],
             },
             {
                month: 'September',
-               photos: Array.from({ length: 3 }, () => `/images/${getRandomImageNumber()}.jpg`),
+               photos: ['/images/3.jpg', '/images/4.jpg', '/images/5.jpg'],
             },
          ],
       },
@@ -46,11 +44,11 @@ const data = {
          albums: [
             {
                month: 'February',
-               photos: Array.from({ length: 3 }, () => `/images/${getRandomImageNumber()}.jpg`),
+               photos: ['/images/1.jpg', '/images/2.jpg', '/images/3.jpg'],
             },
             {
                month: 'June',
-               photos: Array.from({ length: 3 }, () => `/images/${getRandomImageNumber()}.jpg`),
+               photos: ['/images/4.jpg', '/images/5.jpg', '/images/1.jpg'],
             },
          ],
       },
