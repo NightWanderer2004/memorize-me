@@ -1,14 +1,18 @@
 'use client'
 import { motion } from 'framer-motion'
 import PhotoCard from './PhotoCard'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const randomInt = (min, max) => {
    return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
 export default function AlbumSet({ month, photos }) {
-   const [rotations, setRotations] = useState(photos.map(() => randomInt(-3.25, 3.25)))
+   const [rotations, setRotations] = useState(photos.map(() => 0))
+
+   useEffect(() => {
+      setRotations(photos.map(() => randomInt(-3.25, 3.25)))
+   }, [photos])
 
    const handleHover = () => {
       setRotations(photos.map(() => randomInt(-3.25, 3.25)))
