@@ -16,7 +16,7 @@ export default function Home() {
                   duration: 0.55,
                }}
             >
-               <Link href='/' className='flex items-center gap-1 text-accent'>
+               <Link href='/albums' className='flex items-center gap-1 text-accent'>
                   <ArrowLeft className='size-4 stroke-[2.5px]' />{' '}
                   <span className='text-xl lg:text-[18px] font-normal tracking-[-1.5%] leading-[75%]'>Back to Gallery</span>
                </Link>

@@ -2,7 +2,20 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
-export default function Header() {
+export default function Header({ isWelcome }) {
+   if (isWelcome)
+      return (
+         <header>
+            <h1 className='text-[54px] lg:text-[62px] font-medium tracking-[-2%] leading-[75%] text-primary'>
+               <span>Memorize</span>
+               <span className='text-accent'> me</span>
+            </h1>
+            <p className='mt-[14px] lg:mt-[18px] text-center text-base lg:text-lg text-primary tracking-[-1.5%]'>
+               A digital gallery of cherished moments
+            </p>
+         </header>
+      )
+
    return (
       <motion.header
          initial={{ opacity: 0 }}
@@ -11,10 +24,10 @@ export default function Header() {
          className='container mx-auto px-[16px] xl:px-[88px] flex flex-col md:flex-row justify-between items-start w-full'
       >
          <div>
-            <Link href='/' className='text-[54px] lg:text-[62px] font-medium tracking-[-2%] leading-[75%] text-primary'>
+            <h1 className='text-[54px] lg:text-[62px] font-medium tracking-[-2%] leading-[75%] text-primary'>
                <span>Memorize</span>
                <span className='text-accent'> me</span>
-            </Link>
+            </h1>
             <p className='hidden md:block mt-[14px] lg:mt-[18px] text-lg lg:text-[21.5px] text-primary tracking-[-1.5%]'>
                A digital gallery of cherished moments
             </p>

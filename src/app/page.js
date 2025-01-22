@@ -1,147 +1,65 @@
 'use client'
-import { useRef, useEffect, useState } from 'react'
-import { useScroll, useSpring } from 'framer-motion'
-import TimelineStrip from '@/components/timeline/TimelineStrip'
-import Header from '@/components/Header'
-import AlbumSet from '@/components/gallery/AlbumSet'
-import data from '../../data'
+import { useEffect, useState } from 'react'
 import AnimatedWrapper from '@/components/AnimatedWrapper'
-import AddAlbum from '@/components/gallery/AddAlbum'
-import useIsMobile from '@/hooks/useIsMobile'
+import Header from '@/components/Header'
+import { motion } from 'framer-motion'
+import { useRouter } from 'next/navigation'
 
-export default function Home() {
-   const containerRef = useRef(null)
-   const isMobile = useIsMobile()
-   const [containerWidth, setContainerWidth] = useState(0)
-   const [dimensions, setDimensions] = useState({
-      albumWidth: 420,
-      gapWidth: 120,
-      sideOffset: 120,
-   })
+export default function Welcome() {
+   const [inputValue, setInputValue] = useState('')
+   const [animateUp, setAnimateUp] = useState(false)
+   const router = useRouter()
 
-   // Update dimensions based on screen size
    useEffect(() => {
-      setDimensions({
-         albumWidth: isMobile ? 300 : 420,
-         gapWidth: isMobile ? 100 : 120,
-         sideOffset: isMobile ? 45 : 120,
-      })
-   }, [isMobile])
-
-   // Update container width
-   useEffect(() => {
-      if (typeof window === 'undefined') return
-
-      const updateContainerWidth = () => {
-         if (containerRef.current) {
-            setContainerWidth(containerRef.current.offsetWidth)
-         }
+      if (animateUp) {
+         const timer = setTimeout(() => {
+            router.replace('/albums')
+         }, 320)
+         return () => clearTimeout(timer)
       }
+   }, [animateUp])
 
-      updateContainerWidth()
-      window.addEventListener('resize', updateContainerWidth)
-      return () => window.removeEventListener('resize', updateContainerWidth)
-   }, [])
-
-   const { scrollXProgress } = useScroll({
-      container: containerRef,
-   })
-
-   const smoothScrollProgress = useSpring(scrollXProgress, {
-      stiffness: 690,
-      damping: 75,
-      mass: 0.25,
-   })
-
-   // Calculate total scrollable width
-   const getTotalWidth = () => {
-      // Count total number of albums
-      const totalAlbums = data.years.reduce((acc, year) => acc + year.albums.length, 0)
-
-      // Calculate total width including gaps
-      return totalAlbums * dimensions.albumWidth + (totalAlbums - 1) * dimensions.gapWidth + dimensions.sideOffset * 2 // Left and right padding
+   const handleClick = () => {
+      setAnimateUp(true)
    }
 
-   // Calculate position for specific year
-   const getYearPosition = targetYear => {
-      let position = dimensions.sideOffset
-
-      for (const year of data.years) {
-         if (year.year === targetYear) {
-            if (!isMobile) {
-               const centerOffset = (containerWidth - dimensions.albumWidth) / 2
-               return Math.max(0, position - centerOffset)
-            }
-            return Math.max(0, position - dimensions.sideOffset)
-         }
-         position += year.albums.length * dimensions.albumWidth + (year.albums.length - 1) * dimensions.gapWidth
-         position += dimensions.gapWidth // Add gap between years
+   const handleKeyPress = e => {
+      if (e.key === 'Enter' && inputValue) {
+         handleClick()
+         e.target.blur() // Hide mobile keyboard
       }
-
-      return position
-   }
-
-   // Update selected year based on scroll position
-   useEffect(() => {
-      const unsubscribe = smoothScrollProgress.on('change', latest => {
-         if (!containerRef.current) return
-
-         const scrollPosition = latest * getTotalWidth()
-         let accumWidth = dimensions.sideOffset
-
-         for (const year of data.years) {
-            const yearWidth = year.albums.length * dimensions.albumWidth + (year.albums.length - 1) * dimensions.gapWidth
-
-            if (scrollPosition >= accumWidth && scrollPosition < accumWidth + yearWidth) break
-
-            accumWidth += yearWidth + dimensions.gapWidth
-         }
-      })
-
-      return () => unsubscribe()
-   }, [smoothScrollProgress, dimensions])
-
-   const handleYearSelect = year => {
-      if (!containerRef.current) return
-
-      const scrollTo = getYearPosition(year)
-
-      containerRef.current.scrollTo({
-         left: scrollTo,
-         behavior: 'smooth',
-      })
    }
 
    return (
-      <main className='min-h-screen'>
-         <Header />
-         <div ref={containerRef} className='fixed top-[300px] left-0 right-0 h-[400px] overflow-x-auto overflow-y-hidden no-scrollbar'>
-            <AnimatedWrapper>
-               {/* Desktop */}
-               <div className='hidden md:flex gap-[100px] xl:gap-[120px] px-[45px] xl:px-[120px] relative'>
-                  {/* <AddAlbum /> */}
-                  {data.years.map((year, i) => (
-                     <div key={i} className='flex gap-[100px] xl:gap-[120px] relative'>
-                        <div
-                           className='hidden md:block absolute right-0 top-1/2 -translate-y-1/2 h-1/2 w-[1.5px] bg-gradient-to-b from-transparent via-tertirary/70 to-transparent'
-                           aria-hidden='true'
-                        />
-                        {year.albums.map((album, j) => (
-                           <AlbumSet key={j} month={album.month} photos={album.photos} />
-                        ))}
-                     </div>
-                  ))}
+      <div className='min-h-dvh pb-10 lg:pb-24 flex flex-col items-center justify-center container mx-auto max-w-5xl w-full '>
+         <AnimatedWrapper>
+            <motion.div
+               initial={{ y: 0, opacity: 1 }}
+               animate={{ y: animateUp ? -1000 : 0, opacity: animateUp ? 0 : 1 }}
+               transition={{ ease: 'easeInOut', duration: 0.45 }}
+            >
+               <Header isWelcome />
+               <div className='mt-8 lg:mt-10 flex flex-col items-center justify-center gap-3.5 lg:gap-4'>
+                  <input
+                     type='text'
+                     placeholder='Your name'
+                     value={inputValue}
+                     onChange={e => setInputValue(e.target.value)}
+                     onKeyDown={handleKeyPress}
+                     className='w-[190px] px-3 py-1.5 text-xl text-center text-secondary outline-none focus:ring-2 focus:ring-accent/40 rounded-lg bg-back border border-accent/20 shadow-minimal shadow-accent/80 placeholder:animate-pulse placeholder:text-secondary/40 transition-all'
+                  />
+                  <motion.button
+                     whileTap={{ scale: 0.98 }}
+                     transition={{ ease: 'backOut', duration: 0.15 }}
+                     className='outline-none focus:underline underline-offset-2 text-accent disabled:text-accent/30 text-lg disabled:cursor-not-allowed rounded-xl transition-all'
+                     disabled={!inputValue}
+                     onClick={handleClick}
+                  >
+                     Enter gallery
+                  </motion.button>
                </div>
-               {/* Mobile */}
-               <div className='flex md:hidden gap-[100px] lg:gap-[120px] px-[45px] xl:px-[120px]'>
-                  {/* <AddAlbum /> */}
-                  {data.years.map((year, i) =>
-                     year.albums.map((album, j) => <AlbumSet key={`${i}-${j}`} month={album.month} photos={album.photos} />)
-                  )}
-               </div>
-            </AnimatedWrapper>
-         </div>
-         <TimelineStrip years={data.years} onYearSelect={handleYearSelect} scrollProgress={smoothScrollProgress} />
-      </main>
+            </motion.div>
+         </AnimatedWrapper>
+      </div>
    )
 }
