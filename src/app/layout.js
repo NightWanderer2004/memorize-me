@@ -7,6 +7,7 @@ const manrope = Manrope({ subsets: ['latin'] })
 export const metadata = {
    title: 'Memorize me',
    description: 'A digital gallery of cherished moments',
+   keywords: 'memories, gallery, photos, albums',
 }
 
 export default function RootLayout({ children }) {
