@@ -35,6 +35,9 @@ export default function RootLayout({ children }) {
       <html lang='en' suppressHydrationWarning>
          <head>
             <meta name='mobile-web-app-capable' content='yes' />
+            <link rel='apple-touch-icon' href='/favicon/apple-touch-icon.png' />
+            <link rel='icon' href='/favicon/favicon.ico' sizes='any' />
+            <link rel='icon' href='/favicon/icon.svg' type='image/svg+xml' />
          </head>
          <body className={cn(manrope.className, 'pt-safe-offset-6 lg:pt-[50px] bg-back')}>{children}</body>
       </html>
