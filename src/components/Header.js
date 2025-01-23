@@ -33,7 +33,7 @@ export default function Header({ isWelcome }) {
             </p>
          </div>
          <nav>
-            <ul className='mt-5 md:mt-0 flex gap-6 text-xl lg:text-[18px] text-accent tracking-[-1.5%]'>
+            <ul className='mt-5 md:mt-0 flex gap-6 text-xl lg:text-[18px] text-secondary tracking-[-1.5%]'>
                <motion.li
                   whileTap={{ scale: 0.97 }}
                   transition={{
@@ -41,7 +41,7 @@ export default function Header({ isWelcome }) {
                      duration: 0.55,
                   }}
                >
-                  <Link href='/creation-history' className='hover:text-secondary transition-colors'>
+                  <Link href='/creation-history' className='hover:text-accent transition-colors'>
                      Creation history
                   </Link>
                </motion.li>
@@ -56,7 +56,7 @@ export default function Header({ isWelcome }) {
                      href='https://github.com/NightWanderer2004/memorize-me'
                      target='_blank'
                      rel='noopener noreferrer'
-                     className='hover:text-secondary transition-colors'
+                     className='hover:text-accent transition-colors'
                   >
                      GitHub
                   </Link>
