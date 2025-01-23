@@ -32,8 +32,10 @@ html {
    @apply overscroll-none lg:overscroll-auto overflow-hidden;
 }
 
-* {
-   -webkit-user-select: none; /* Safari */
-   -ms-user-select: none; /* IE 10 and IE 11 */
-   user-select: none; /* Standard syntax */
+@media (max-width: 768px) {
+   * {
+      -webkit-user-select: none; /* Safari */
+      -ms-user-select: none; /* IE 10 and IE 11 */
+      user-select: none; /* Standard syntax */
+   }
 }
