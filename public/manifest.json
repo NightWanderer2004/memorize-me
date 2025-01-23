@@ -1,0 +1,50 @@
+{
+   "name": "Memorize Me",
+   "short_name": "Memorize Me",
+   "start_url": "/",
+   "display": "fullscreen",
+   "orientation": "any",
+   "theme_color": "#ffffff",
+   "background_color": "#ffffff",
+   "icons": [
+      {
+         "src": "/favicon.ico",
+         "sizes": "48x48",
+         "type": "image/x-icon",
+         "purpose": "any"
+      },
+      {
+         "src": "/android-chrome-192x192-maskable.png",
+         "sizes": "192x192",
+         "type": "image/png",
+         "purpose": "maskable"
+      },
+      {
+         "src": "/android-chrome-192x192.png",
+         "sizes": "192x192",
+         "type": "image/png",
+         "purpose": "any"
+      },
+      {
+         "src": "/android-chrome-512x512-maskable.png",
+         "sizes": "512x512",
+         "type": "image/png",
+         "purpose": "maskable"
+      },
+      {
+         "src": "/android-chrome-512x512.png",
+         "sizes": "512x512",
+         "type": "image/png",
+         "purpose": "any"
+      },
+      {
+         "src": "/apple-touch-icon.png",
+         "sizes": "180x180",
+         "type": "image/png",
+         "purpose": "any"
+      }
+   ],
+   "description": "A digital gallery of cherished moments",
+   "dir": "auto",
+   "lang": "en"
+}

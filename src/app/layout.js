@@ -3,17 +3,40 @@ import './globals.css'
 import { cn } from '@/lib/utils'
 
 const manrope = Manrope({ subsets: ['latin'] })
+const APP_NAME = 'Memorize me'
+const APP_DEFAULT_TITLE = 'Memorize me'
+const APP_DESCRIPTION = 'A digital gallery of cherished moments'
 
 export const metadata = {
-   title: 'Memorize me',
-   description: 'A digital gallery of cherished moments',
+   applicationName: APP_NAME,
+   title: {
+      default: APP_DEFAULT_TITLE,
+   },
+   description: APP_DESCRIPTION,
    keywords: 'memories, gallery, photos, albums',
+   manifest: '/manifest.json',
+   appleWebApp: {
+      capable: true,
+      display: 'fullscreen',
+      statusBarStyle: 'black-translucent',
+      title: APP_DEFAULT_TITLE,
+   },
+}
+export const viewport = {
+   width: 'device-width',
+   initialScale: 1,
+   maximumScale: 1,
+   viewportFit: 'cover',
+   userScalable: false,
 }
 
 export default function RootLayout({ children }) {
    return (
       <html lang='en' suppressHydrationWarning>
-         <body className={cn(manrope.className, 'pt-[44px] lg:pt-[50px] pb-[30px] bg-back')}>{children}</body>
+         <head>
+            <meta name='mobile-web-app-capable' content='yes' />
+         </head>
+         <body className={cn(manrope.className, 'pt-safe-offset-6 lg:pt-[50px] bg-back')}>{children}</body>
       </html>
    )
 }
