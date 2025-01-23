@@ -42,14 +42,6 @@ export async function POST(req) {
       // Check if user already exists
       const existingUser = users.find(user => user.name.toLowerCase() === name.toLowerCase())
       if (existingUser) {
-         // Debug logging (temporary)
-         console.log('Found existing user:', {
-            name: existingUser.name,
-            storedHash: existingUser.code,
-            providedHash: hashedCode,
-            matches: existingUser.code === hashedCode,
-         })
-
          if (existingUser.code !== hashedCode) {
             return NextResponse.json({ error: 'Incorrect code' }, { status: 401 })
          }
@@ -73,12 +65,25 @@ export async function POST(req) {
       try {
          await fs.writeFile(dataFile, JSON.stringify({ users }, null, 2))
 
-         // Create user directory
-         const userDir = path.join(process.cwd(), 'public', 'users', name)
-         await fs.mkdir(userDir, { recursive: true }).catch(err => {
-            // If directory already exists, that's fine
-            if (err.code !== 'EEXIST') throw err
-         })
+         // Trigger GitHub sync after successful user creation
+         try {
+            const syncResponse = await fetch('/api/sync', {
+               method: 'POST',
+               headers: {
+                  'Content-Type': 'application/json',
+               },
+               body: JSON.stringify({
+                  message: `Added new user: ${name}`,
+                  files: ['public/data/users.json'],
+               }),
+            })
+
+            if (!syncResponse.ok) {
+               console.error('GitHub sync failed:', await syncResponse.text())
+            }
+         } catch (syncError) {
+            console.error('Error triggering GitHub sync:', syncError)
+         }
 
          return NextResponse.json({
             id: newUser.id,
