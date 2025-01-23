@@ -113,7 +113,7 @@ export default function Home() {
    }
 
    return (
-      <main className='min-h-screen'>
+      <main>
          <Header />
          <div ref={containerRef} className='fixed top-[35%] xl:top-[300px] left-0 right-0 h-[400px] overflow-x-auto overflow-y-hidden no-scrollbar'>
             <AnimatedWrapper>
@@ -136,7 +136,7 @@ export default function Home() {
                <div className='flex md:hidden gap-[100px] lg:gap-[120px] px-[45px] xl:px-[120px]'>
                   {/* <AddAlbum /> */}
                   {data.years.map((year, i) =>
-                     year.albums.map((album, j) => <AlbumSet key={`${i}-${j}`} month={album.month} photos={album.photos} />)
+                     year.albums.map((album, j) => <AlbumSet key={`${i}-${j}`} month={album.month} photos={album.photos} />),
                   )}
                </div>
             </AnimatedWrapper>

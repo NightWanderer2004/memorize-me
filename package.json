@@ -17,7 +17,8 @@
     "prettier": "^3.4.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "tailwind-merge": "^2.6.0"
+    "tailwind-merge": "^2.6.0",
+    "tailwindcss-safe-area": "^0.6.0"
   },
   "devDependencies": {
     "postcss": "^8.4.49",

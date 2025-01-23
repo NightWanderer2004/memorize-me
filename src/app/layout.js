@@ -1,7 +1,6 @@
 import { Manrope } from 'next/font/google'
 import './globals.css'
 import { cn } from '@/lib/utils'
-import Head from 'next/head'
 
 const manrope = Manrope({ subsets: ['latin'] })
 const APP_NAME = 'Memorize me'
@@ -34,10 +33,10 @@ export const viewport = {
 export default function RootLayout({ children }) {
    return (
       <html lang='en' suppressHydrationWarning>
-         <Head>
+         <head>
             <meta name='mobile-web-app-capable' content='yes' />
-         </Head>
-         <body className={cn(manrope.className, 'pt-[44px] lg:pt-[50px] pb-[30px] bg-back')}>{children}</body>
+         </head>
+         <body className={cn(manrope.className, 'pt-safe-offset-6 lg:pt-[50px] bg-back')}>{children}</body>
       </html>
    )
 }
