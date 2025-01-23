@@ -24,7 +24,13 @@ export default function Home() {
          </motion.header>
          <AnimatedWrapper>
             <p className='mx-auto text-lg mt-14'>
-               Hi-Hi ヽ(°〇°)ﾉ <br /> <br /> This app was created by the reason of study project
+               Add first paragraph here
+            </p>
+            <p className='mx-auto text-lg mt-14'>
+               Add second paragraph here
+            </p>
+            <p className='mx-auto text-lg mt-14'>
+               Add third paragraph here
             </p>
          </AnimatedWrapper>
       </main>
