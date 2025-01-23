@@ -12,6 +12,7 @@ export default function Header({ isWelcome }) {
    if (isWelcome) return <WelcomeHeader />
 
    return (
+<<<<<<< HEAD
       <>
          <motion.header
             initial={{ opacity: 0 }}
@@ -31,8 +32,61 @@ export default function Header({ isWelcome }) {
                      transition={{ ease: 'backOut', duration: 0.55 }}
                      onClick={() => setIsMenuOpen(true)}
                      className='md:hidden mt-2'
+=======
+      <motion.header
+         initial={{ opacity: 0 }}
+         animate={{ opacity: 1 }}
+         transition={{ ease: 'backOut', duration: 0.55 }}
+         className='container mx-auto px-[16px] xl:px-[88px] flex flex-col md:flex-row justify-between items-start w-full'
+      >
+         <div>
+            <h1 className='text-[54px] lg:text-[62px] font-medium tracking-[-2%] leading-[75%] text-primary'>
+               <span>Memorize</span>
+               <span className='text-accent'> me</span>
+            </h1>
+            <p className='hidden md:block mt-[14px] lg:mt-[18px] text-lg lg:text-[21.5px] text-primary tracking-[-1.5%]'>
+               A digital gallery of cherished moments
+            </p>
+         </div>
+         <nav>
+            <ul className='mt-5 md:mt-0 flex gap-6 text-xl lg:text-[18px] text-secondary tracking-[-1.5%]'>
+                <motion.li
+                  whileTap={{ scale: 0.97 }}
+                  transition={{
+                     ease: 'backOut',
+                     duration: 0.55,
+                  }}
+               >
+                  <Link href='/what-is-it' className='hover:text-accent transition-colors'>
+                     What's it
+                  </Link>
+               </motion.li>
+               <motion.li
+                  whileTap={{ scale: 0.97 }}
+                  transition={{
+                     ease: 'backOut',
+                     duration: 0.55,
+                  }}
+               >
+                  <Link href='/creation-history' className='hover:text-accent transition-colors'>
+                     Creation history
+                  </Link>
+               </motion.li>
+               <motion.li
+                  whileTap={{ scale: 0.97 }}
+                  transition={{
+                     ease: 'backOut',
+                     duration: 0.55,
+                  }}
+               >
+                  <Link
+                     href='https://github.com/NightWanderer2004/memorize-me'
+                     target='_blank'
+                     rel='noopener noreferrer'
+                     className='hover:text-accent transition-colors'
+>>>>>>> origin/main
                   >
-                     <Menu className='text-accent size-9' />
+                     <Menu className='text-secondary size-9' />
                   </motion.button>
                </div>
                <p className='hidden md:block mt-[14px] lg:mt-[18px] text-lg lg:text-[21.5px] text-primary tracking-[-1.5%]'>
@@ -113,7 +167,7 @@ export default function Header({ isWelcome }) {
                            href='https://github.com/NightWanderer2004/memorize-me'
                            target='_blank'
                            rel='noopener noreferrer'
-                           className='hover:text-secondary transition-colors'
+                           className='hover:text-accent transition-colors'
                            onClick={() => setIsMenuOpen(false)}
                         >
                            GitHub
