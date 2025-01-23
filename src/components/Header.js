@@ -12,7 +12,6 @@ export default function Header({ isWelcome }) {
    if (isWelcome) return <WelcomeHeader />
 
    return (
-<<<<<<< HEAD
       <>
          <motion.header
             initial={{ opacity: 0 }}
@@ -32,59 +31,6 @@ export default function Header({ isWelcome }) {
                      transition={{ ease: 'backOut', duration: 0.55 }}
                      onClick={() => setIsMenuOpen(true)}
                      className='md:hidden mt-2'
-=======
-      <motion.header
-         initial={{ opacity: 0 }}
-         animate={{ opacity: 1 }}
-         transition={{ ease: 'backOut', duration: 0.55 }}
-         className='container mx-auto px-[16px] xl:px-[88px] flex flex-col md:flex-row justify-between items-start w-full'
-      >
-         <div>
-            <h1 className='text-[54px] lg:text-[62px] font-medium tracking-[-2%] leading-[75%] text-primary'>
-               <span>Memorize</span>
-               <span className='text-accent'> me</span>
-            </h1>
-            <p className='hidden md:block mt-[14px] lg:mt-[18px] text-lg lg:text-[21.5px] text-primary tracking-[-1.5%]'>
-               A digital gallery of cherished moments
-            </p>
-         </div>
-         <nav>
-            <ul className='mt-5 md:mt-0 flex gap-6 text-xl lg:text-[18px] text-secondary tracking-[-1.5%]'>
-                <motion.li
-                  whileTap={{ scale: 0.97 }}
-                  transition={{
-                     ease: 'backOut',
-                     duration: 0.55,
-                  }}
-               >
-                  <Link href='/what-is-it' className='hover:text-accent transition-colors'>
-                     What's it
-                  </Link>
-               </motion.li>
-               <motion.li
-                  whileTap={{ scale: 0.97 }}
-                  transition={{
-                     ease: 'backOut',
-                     duration: 0.55,
-                  }}
-               >
-                  <Link href='/creation-history' className='hover:text-accent transition-colors'>
-                     Creation history
-                  </Link>
-               </motion.li>
-               <motion.li
-                  whileTap={{ scale: 0.97 }}
-                  transition={{
-                     ease: 'backOut',
-                     duration: 0.55,
-                  }}
-               >
-                  <Link
-                     href='https://github.com/NightWanderer2004/memorize-me'
-                     target='_blank'
-                     rel='noopener noreferrer'
-                     className='hover:text-accent transition-colors'
->>>>>>> origin/main
                   >
                      <Menu className='text-secondary size-9' />
                   </motion.button>
@@ -94,7 +40,7 @@ export default function Header({ isWelcome }) {
                </p>
             </div>
             <nav className='relative hidden md:block w-full md:w-auto'>
-               <ul className='mt-5 md:mt-0 flex gap-6 text-xl lg:text-[18px] text-accent tracking-[-1.5%] items-center'>
+               <ul className='mt-5 md:mt-0 flex gap-6 text-xl lg:text-[18px] text-secondary tracking-[-1.5%] items-center'>
                   <motion.li
                      whileTap={{ scale: 0.97 }}
                      transition={{
@@ -102,12 +48,12 @@ export default function Header({ isWelcome }) {
                         duration: 0.55,
                      }}
                   >
-                     <Link href='/creation-history' className='hover:text-secondary transition-colors'>
+                     <Link href='/creation-history' className='hover:text-accent transition-colors'>
                         Creation history
                      </Link>
                   </motion.li>
                   <motion.li whileTap={{ scale: 0.97 }} transition={{ ease: 'backOut', duration: 0.55 }}>
-                     <Link href='/what-is-it' className='hover:text-secondary transition-colors'>
+                     <Link href='/what-is-it' className='hover:text-accent transition-colors'>
                         What's it?
                      </Link>
                   </motion.li>
@@ -122,7 +68,7 @@ export default function Header({ isWelcome }) {
                         href='https://github.com/NightWanderer2004/memorize-me'
                         target='_blank'
                         rel='noopener noreferrer'
-                        className='hover:text-secondary transition-colors'
+                        className='hover:text-accent transition-colors'
                      >
                         GitHub
                      </Link>
@@ -156,33 +102,43 @@ export default function Header({ isWelcome }) {
                      className='absolute inset-0 pb-44 flex flex-col items-center justify-center'
                      onClick={e => setIsMenuOpen(false)}
                   >
-                     <nav className='flex flex-col items-center text-accent text-3xl gap-4'>
-                        <Link href='/creation-history' className='hover:text-secondary transition-colors' onClick={() => setIsMenuOpen(false)}>
-                           Creation history
-                        </Link>
-                        <Link href='/what-is-it' className='hover:text-secondary transition-colors' onClick={() => setIsMenuOpen(false)}>
-                           What's it?
-                        </Link>
-                        <Link
-                           href='https://github.com/NightWanderer2004/memorize-me'
-                           target='_blank'
-                           rel='noopener noreferrer'
-                           className='hover:text-accent transition-colors'
-                           onClick={() => setIsMenuOpen(false)}
-                        >
-                           GitHub
-                        </Link>
-                        {user && (
-                           <button
-                              onClick={() => {
-                                 logout()
-                                 setIsMenuOpen(false)
-                              }}
-                              className='text-orange-500 hover:text-orange-600 transition-colors'
-                           >
-                              Exit
-                           </button>
-                        )}
+                     <nav>
+                        <ul className='flex flex-col items-center text-secondary font-light text-3xl gap-6'>
+                           <motion.li whileTap={{ scale: 0.97 }} transition={{ ease: 'backOut', duration: 0.55 }}>
+                              <Link href='/creation-history' className='transition-colors' onClick={() => setIsMenuOpen(false)}>
+                                 Creation history
+                              </Link>
+                           </motion.li>
+                           <motion.li whileTap={{ scale: 0.97 }} transition={{ ease: 'backOut', duration: 0.55 }}>
+                              <Link href='/what-is-it' className='transition-colors' onClick={() => setIsMenuOpen(false)}>
+                                 What's it?
+                              </Link>
+                           </motion.li>
+                           <motion.li whileTap={{ scale: 0.97 }} transition={{ ease: 'backOut', duration: 0.55 }}>
+                              <Link
+                                 href='https://github.com/NightWanderer2004/memorize-me'
+                                 target='_blank'
+                                 rel='noopener noreferrer'
+                                 className='hover:text-accent transition-colors'
+                                 onClick={() => setIsMenuOpen(false)}
+                              >
+                                 GitHub
+                              </Link>
+                           </motion.li>
+                           {user && (
+                              <motion.li whileTap={{ scale: 0.97 }} transition={{ ease: 'backOut', duration: 0.55 }}>
+                                 <button
+                                    onClick={() => {
+                                       logout()
+                                       setIsMenuOpen(false)
+                                    }}
+                                    className='text-orange-500 hover:text-orange-600 transition-colors'
+                                 >
+                                    [ Exit ]
+                                 </button>
+                              </motion.li>
+                           )}
+                        </ul>
                      </nav>
                   </motion.div>
                </motion.div>
