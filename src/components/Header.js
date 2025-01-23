@@ -34,6 +34,17 @@ export default function Header({ isWelcome }) {
          </div>
          <nav>
             <ul className='mt-5 md:mt-0 flex gap-6 text-xl lg:text-[18px] text-accent tracking-[-1.5%]'>
+            <motion.li
+                  whileTap={{ scale: 0.97 }}
+                  transition={{
+                     ease: 'backOut',
+                     duration: 0.55,
+                  }}
+               >
+                  <Link href='/what-is-it' className='hover:text-secondary transition-colors'>
+                     What's it
+                  </Link>
+               </motion.li>
                <motion.li
                   whileTap={{ scale: 0.97 }}
                   transition={{
