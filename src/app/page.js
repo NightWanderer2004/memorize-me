@@ -16,7 +16,7 @@ export default function Welcome() {
    const { login, user } = useAuth()
 
    useEffect(() => {
-      if (user) router.replace('/albums')
+      if (user) router.replace(`/albums/${user.name}`)
    }, [user, router])
 
    const handleSubmit = async () => {

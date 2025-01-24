@@ -134,7 +134,7 @@ export default function Header({ isWelcome }) {
                                     }}
                                     className='text-orange-500 hover:text-orange-600 transition-colors'
                                  >
-                                    [ Exit ]
+                                    Exit
                                  </button>
                               </motion.li>
                            )}

@@ -29,7 +29,7 @@
 
 body,
 html {
-   @apply overscroll-none lg:overscroll-auto overflow-hidden;
+   @apply overscroll-none min-h-screen-safe;
 }
 
 @media (max-width: 768px) {
