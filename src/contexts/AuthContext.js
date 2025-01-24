@@ -8,12 +8,10 @@ export function AuthProvider({ children }) {
    const router = useRouter()
    const [user, setUser] = useState(null)
 
+   // Check localStorage for existing user
    useEffect(() => {
-      // Check localStorage for existing user
       const storedUser = localStorage.getItem('user')
-      if (storedUser) {
-         setUser(JSON.parse(storedUser))
-      }
+      if (storedUser) setUser(JSON.parse(storedUser))
    }, [])
 
    const login = async (name, code) => {

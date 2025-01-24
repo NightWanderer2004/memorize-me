@@ -2,9 +2,10 @@
 import { useEffect, useState } from 'react'
 import AnimatedWrapper from '@/components/AnimatedWrapper'
 import Header from '@/components/Header'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '@/contexts/AuthContext'
+import { cn } from '@/lib/utils'
 
 export default function Welcome() {
    const [name, setName] = useState('')
@@ -15,7 +16,7 @@ export default function Welcome() {
    const { login, user } = useAuth()
 
    useEffect(() => {
-      if (user) router.replace('/albums')
+      if (user) router.replace(`/albums/${user.name}`)
    }, [user, router])
 
    const handleSubmit = async () => {
@@ -73,18 +74,26 @@ export default function Welcome() {
                         }
                      }}
                      onKeyDown={handleKeyPress}
-                     className='w-[160px] px-3 py-1 text-xl text-center text-secondary outline-none focus:ring-2 focus:ring-accent/40 rounded-lg bg-back border border-accent/20 shadow-minimal shadow-accent/80 placeholder:animate-pulse placeholder:text-secondary/40 transition-all'
+                     className='w-[160px] px-3 py-1 text-lg text-center text-secondary outline-none focus:ring-2 focus:ring-accent/40 rounded-lg bg-back border border-accent/20 shadow-minimal shadow-accent/80 placeholder:animate-pulse placeholder:text-secondary/40 transition-all'
                   />
-                  {error && <p className='text-red-500 text-sm'>{error}</p>}
                   <motion.button
                      whileTap={{ scale: 0.98 }}
-                     transition={{ ease: 'backOut', duration: 0.15 }}
-                     className='outline-none focus:underline underline-offset-2 text-accent disabled:text-accent/30 text-lg disabled:cursor-not-allowed rounded-xl transition-all'
+                     whileHover={{ scale: 1.025 }}
+                     transition={{ ease: 'easeOut', duration: 0.2 }}
+                     className='outline-none text-accent disabled:text-accent/30 text-lg disabled:cursor-not-allowed rounded-xl transition-colors'
                      disabled={!name || !code}
                      onClick={handleSubmit}
                   >
                      Enter gallery
                   </motion.button>
+                  <motion.p
+                     className={cn('text-orange-500 text-sm')}
+                     initial={{ opacity: 0 }}
+                     animate={{ opacity: error ? 1 : 0 }}
+                     transition={{ ease: 'easeInOut', duration: 0.3 }}
+                  >
+                     {error}
+                  </motion.p>
                </div>
             </motion.div>
          </AnimatedWrapper>
