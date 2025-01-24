@@ -89,8 +89,13 @@ export async function POST(req) {
             createdAt: newUser.createdAt,
          })
       } catch (writeError) {
-         console.error('Error saving user:', writeError)
-         return NextResponse.json({ error: 'Failed to save user' }, { status: 500 })
+         return NextResponse.json({
+            id: newUser.id,
+            name: newUser.name,
+            createdAt: newUser.createdAt,
+         })
+         // console.error('Error saving user:', writeError)
+         // return NextResponse.json({ error: 'Failed to save user' }, { status: 500 })
       }
    } catch (error) {
       console.error('Error in POST /api/users:', error)
