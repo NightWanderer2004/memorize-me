@@ -91,7 +91,7 @@ export default function Header({ isWelcome }) {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0, transition: { duration: 0.7, ease: [0.4, 0, 0.2, 1] } }}
                   transition={{ duration: 0.65, ease: [0.4, 0, 0.2, 1] }}
-                  className='fixed inset-0 bg-transparent backdrop-blur-xl z-50 md:hidden'
+                  className='fixed inset-0 bg-transparent backdrop-blur-xl z-[100] md:hidden'
                   onClick={() => setIsMenuOpen(false)}
                >
                   <motion.div
