@@ -4,45 +4,7 @@
          "id": "1737965252036",
          "name": "Ed",
          "code": "d39e4944079189a2436e7486cbf38e7c8a3ecfd0b6ea1bd01df0dc9eb0ec8941",
-         "createdAt": "2025-01-27T08:07:32.036Z",
-         "photos": [
-            {
-               "url": "/uploads/ed/2012/february/1737983085841-dithered-frog.png",
-               "date": "2025-01-27T13:04:45.842Z"
-            },
-            {
-               "url": "/uploads/ed/2020/june/1737983105616-dithered-image (2).jpeg",
-               "date": "2025-01-27T13:05:05.617Z"
-            },
-            {
-               "url": "/uploads/ed/2022/august/1737983114545-dithered-image (1).jpeg",
-               "date": "2025-01-27T13:05:14.547Z"
-            },
-            {
-               "url": "/uploads/ed/2010/november/1737983200819-dithered-monster.png",
-               "date": "2025-01-27T13:06:40.835Z"
-            },
-            {
-               "url": "/uploads/ed/999/june/1737983441040-dithered-image (2).jpeg",
-               "date": "2025-01-27T13:10:41.040Z"
-            },
-            {
-               "url": "/uploads/ed/2010/february/1737983459018-dithered-image (2).jpeg",
-               "date": "2025-01-27T13:10:59.019Z"
-            },
-            {
-               "url": "/uploads/ed/300/may/1737983471714-dithered-image (2).jpeg",
-               "date": "2025-01-27T13:11:11.717Z"
-            },
-            {
-               "url": "/uploads/ed/32/january/1737983716449-dithered-image (2).jpeg",
-               "date": "2025-01-27T13:15:16.455Z"
-            },
-            {
-               "url": "/uploads/ed/2011/february/1737983800060-dithered-image (5).jpeg",
-               "date": "2025-01-27T13:16:40.062Z"
-            }
-         ]
+         "createdAt": "2025-01-27T08:07:32.036Z"
       },
       {
          "id": "1737967079215",
