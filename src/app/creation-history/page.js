@@ -42,7 +42,7 @@ export default function Home() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1, ease: 'easeOut', duration: 0.55 }}
                >
-                  <h1 className='text-2xl font-medium text-secondary mb-6'>What's it?</h1>
+                  <h1 className='text-2xl font-medium text-secondary mb-6'>Main idea</h1>
                   <p className='text-lg text-primary'>
                      The idea for creating the "Memorize Me" website was born during our time at university. As a team of friends and students, we
                      were assigned a task to come up with and implement a project for the "Frontend Development" course. One evening, the four of us
