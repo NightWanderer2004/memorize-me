@@ -102,7 +102,6 @@ export default function UserAlbumsPage({ params }) {
          <Header />
          <div className={cn(hasPhotos ? 'hidden' : 'block', 'absolute w-full md:w-auto bottom-safe left-1/2 -translate-x-1/2 px-4 py-8')}>
             <AnimatedWrapper>
-               {/* <FileUpload onSuccess={fetchUserData} /> */}
                <p className='text-3xl text-accent font-medium'>
                   Hi, <span>{username}!</span> <br className='md:hidden' />{' '}
                   <span className='font-normal text-primary text-2xl md:text-3xl md:ml-2'>Let's add some photos</span>

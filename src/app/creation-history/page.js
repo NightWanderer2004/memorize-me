@@ -112,6 +112,7 @@ export default function Home() {
                   transition={{ delay: 0.6, ease: 'easeOut', duration: 0.55 }}
                >
                   <h6 className='text-2xl font-medium text-secondary mb-6'>Work Process</h6>
+                  <p className='text-lg text-primary mb-5'>And now you can take a look at a few photos from the process of creating our website:</p>
                   <div className='space-y-10 '>
                      <Image className='mx-auto rounded-[2px] shadow-photo border-2 border-[#F8F9FA]' src={One} alt='One' width={700} height={600} />
                      <Image className='mx-auto rounded-[2px] shadow-photo border-2 border-[#F8F9FA]' src={Two} alt='One' width={700} height={600} />
