@@ -2,6 +2,7 @@ import { Manrope } from 'next/font/google'
 import './globals.css'
 import { cn } from '@/lib/utils'
 import { AuthProvider } from '@/contexts/AuthContext'
+import { Toaster } from '@/components/ui/sonner'
 
 const manrope = Manrope({ subsets: ['latin'] })
 const APP_NAME = 'Memorize me'
@@ -42,6 +43,7 @@ export default function RootLayout({ children }) {
          </head>
          <body className={cn(manrope.className, 'pt-safe-offset-2 lg:pt-[50px] bg-back')}>
             <AuthProvider>{children}</AuthProvider>
+            <Toaster richColors />
          </body>
       </html>
    )

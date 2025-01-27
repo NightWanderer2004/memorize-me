@@ -32,6 +32,7 @@ export function AuthProvider({ children }) {
          setTimeout(() => {
             setUser(userData)
             localStorage.setItem('user', JSON.stringify(userData))
+            router.push('/')
          }, 320) // Match animation duration
 
          return { success: true }

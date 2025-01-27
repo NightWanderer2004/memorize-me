@@ -36,8 +36,8 @@ export default function TimelineStrip({ years, onYearSelect, scrollProgress }) {
       <div className='fixed bottom-0 left-0 right-0 px-5 xl:px-16 h-24'>
          <div ref={containerRef} className='relative h-full max-w-5xl mx-auto'>
             <AnimatedWrapper className='relative h-full'>
-               <Years yearPositions={yearPositions} onYearSelect={onYearSelect} smoothProgress={smoothProgress} />
-               <Lines smoothProgress={smoothProgress} />
+               {years.length >= 2 && <Years yearPositions={yearPositions} onYearSelect={onYearSelect} smoothProgress={smoothProgress} />}
+               {years.length >= 3 && <Lines smoothProgress={smoothProgress} />}
             </AnimatedWrapper>
          </div>
       </div>

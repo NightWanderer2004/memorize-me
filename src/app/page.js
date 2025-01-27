@@ -39,7 +39,7 @@ export default function Welcome() {
    }
 
    return (
-      <div className=' pt-[180px] flex flex-col items-center justify-center container mx-auto max-w-5xl w-full'>
+      <div className='pt-[180px] flex flex-col items-center justify-center container mx-auto max-w-5xl w-full'>
          <AnimatedWrapper>
             <motion.div
                initial={{ y: 0, opacity: 1 }}
