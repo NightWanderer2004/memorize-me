@@ -11,6 +11,11 @@
       -ms-overflow-style: none; /* IE and Edge */
       scrollbar-width: none; /* Firefox */
    }
+   .web-appearance-none {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+   }
 }
 
 @layer components {

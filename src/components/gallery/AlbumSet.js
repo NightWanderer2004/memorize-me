@@ -34,7 +34,7 @@ export default function AlbumSet({ month, photos }) {
          >
             {photos.map((photo, i) => {
                const rotation = rotations[i]
-               return <PhotoCard key={i} rotation={rotation} imageUrl={photo} />
+               return <PhotoCard key={i} rotation={rotation} imageUrl={photo.url} />
             })}
          </motion.div>
          <h3 className='mt-3.5 text-xl font-normal text-secondary'>{month}</h3>

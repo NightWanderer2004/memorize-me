@@ -50,12 +50,6 @@ export default function TimelineContainer({ timelineData }) {
       mass: 0.25,
    })
 
-   // Calculate total scrollable width
-   const getTotalWidth = () => {
-      const totalAlbums = timelineData.reduce((acc, year) => acc + year.albums.length, 0)
-      return totalAlbums * dimensions.albumWidth + (totalAlbums - 1) * dimensions.gapWidth + dimensions.sideOffset * 2
-   }
-
    // Calculate position for specific year
    const getYearPosition = targetYear => {
       let position = dimensions.sideOffset
@@ -85,9 +79,13 @@ export default function TimelineContainer({ timelineData }) {
       })
    }
 
+   if (timelineData.length === 0) {
+      return
+   }
+
    return (
       <>
-         <div ref={containerRef} className='fixed top-[35%] xl:top-[300px] left-0 right-0 h-[400px] overflow-x-auto overflow-y-hidden no-scrollbar'>
+         <div ref={containerRef} className='fixed top-[35%] xl:top-[320px] left-0 right-0 h-[400px] overflow-x-auto no-scrollbar'>
             <AnimatedWrapper>
                {/* Desktop */}
                <div className='hidden md:flex gap-[100px] xl:gap-[120px] px-[45px] xl:px-[120px] relative'>

@@ -40,7 +40,7 @@ export default function Header({ isWelcome }) {
                </p>
             </div>
             <nav className='relative hidden md:block w-full md:w-auto'>
-               <ul className='mt-5 md:mt-0 flex gap-6 text-xl lg:text-[18px] text-secondary tracking-[-1.5%] items-center'>
+               <ul className='mt-5 md:mt-0 md:pt-5 lg:pt-0 flex gap-6 text-xl lg:text-[18px] text-secondary tracking-[-1.5%] items-center'>
                   <motion.li
                      whileTap={{ scale: 0.97 }}
                      transition={{
@@ -91,7 +91,7 @@ export default function Header({ isWelcome }) {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0, transition: { duration: 0.7, ease: [0.4, 0, 0.2, 1] } }}
                   transition={{ duration: 0.65, ease: [0.4, 0, 0.2, 1] }}
-                  className='fixed inset-0 bg-back/85 backdrop-blur-md z-50 md:hidden'
+                  className='fixed inset-0 bg-transparent backdrop-blur-xl z-50 md:hidden'
                   onClick={() => setIsMenuOpen(false)}
                >
                   <motion.div
