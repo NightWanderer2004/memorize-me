@@ -7,50 +7,6 @@
          "createdAt": "2025-01-27T08:07:32.036Z"
       },
       {
-         "id": "1737967079215",
-         "name": "Oka",
-         "code": "5fca7e3e4091172ddbfb347995edc302422d7d20bc15f8d5712757e223666f23",
-         "createdAt": "2025-01-27T08:37:59.215Z",
-         "photos": [
-            {
-               "url": "/uploads/oka/2022/may/1737967357997-dithered-image (1).jpeg",
-               "date": "2025-01-27T08:42:37.998Z"
-            },
-            {
-               "url": "/uploads/oka/2022/may/1737967357998-dithered-image (2).jpeg",
-               "date": "2025-01-27T08:42:37.998Z"
-            },
-            {
-               "url": "/uploads/oka/2011/february/1737967766888-dithered-frog.png",
-               "date": "2025-01-27T08:49:26.889Z"
-            },
-            {
-               "url": "/uploads/oka/2000/january/1737967774076-dithered-image (4).jpeg",
-               "date": "2025-01-27T08:49:34.077Z"
-            },
-            {
-               "url": "/uploads/oka/2002/april/1737967964381-dithered-monster.png",
-               "date": "2025-01-27T08:52:44.383Z"
-            },
-            {
-               "url": "/uploads/oka/2002/april/1737967964382-dithered-image (5).jpeg",
-               "date": "2025-01-27T08:52:44.383Z"
-            },
-            {
-               "url": "/uploads/oka/2002/april/1737967978333-dithered-frog.png",
-               "date": "2025-01-27T08:52:58.335Z"
-            },
-            {
-               "url": "/uploads/oka/2002/april/1737967978334-dithered-image (2).jpeg",
-               "date": "2025-01-27T08:52:58.335Z"
-            },
-            {
-               "url": "/uploads/oka/2000/january/1737967988937-dithered-image (1).jpeg",
-               "date": "2025-01-27T08:53:08.939Z"
-            }
-         ]
-      },
-      {
          "id": "1738005627560",
          "name": "Valerii",
          "code": "d658a8cc20dd2fb71874655e28bb525b3edbfbff3110a1dc5b9f26386d719f05",
@@ -157,6 +113,12 @@
                "date": "2025-01-27T20:30:21.628Z"
             }
          ]
+      },
+      {
+         "id": "1738048826532",
+         "name": "Yoko",
+         "code": "b71e20ae2846e2a7b4371d5859f1228af4a8fd1b179a990501f76836ae08ee4d",
+         "createdAt": "2025-01-28T07:20:26.532Z"
       }
    ]
 }
