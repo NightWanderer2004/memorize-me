@@ -9,12 +9,19 @@ The main idea of this website is to store your memories in one place. Simply upl
 ## Some shots
 
 **Auth screen**
+
 <img width="600" alt="Welcome auth screen" src="https://github.com/user-attachments/assets/b4725823-97ab-48be-86a7-597838fb6d37" />
 
+---
+
 **Welcome screen**
+
 <img width="600" alt="Welcome screen" src="https://github.com/user-attachments/assets/50ffa567-2784-4994-afc2-71bf8ee4adc7" />
 
+---
+
 **Albums screen**
+
 <img width="600" alt="Albums screen" src="https://github.com/user-attachments/assets/c5fff542-5b7e-4867-be13-fbf406538bac" />
 
 ## Our Goal
